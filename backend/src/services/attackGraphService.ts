@@ -1,5 +1,5 @@
 import { supabase } from '../db/supabase';
-import { log, LogLevel, withRetry, validate } from '../utils/dbUtils';
+import { log, LogLevel, withRetry } from '../utils/dbUtils';
 
 const CONTEXT = 'AttackGraphService';
 
@@ -111,20 +111,20 @@ function isValidPosition(position: any): position is NodePosition {
 }
 
 /**
- * Validates a node data object
+ * Validates a node data object (Unused)
  */
-function isValidNodeData(data: any): data is NodeData {
+/* function isValidNodeData(data: any): data is NodeData {
     return (
         data &&
         typeof data === 'object' &&
         typeof data.description === 'string'
     );
-}
+} */
 
 /**
- * Validates a single node
+ * Validates a single node (Unused)
  */
-function isValidNode(node: any): boolean {
+/* function isValidNode(node: any): boolean {
     return (
         node &&
         typeof node === 'object' &&
@@ -133,12 +133,12 @@ function isValidNode(node: any): boolean {
         typeof node.type === 'string' &&
         ['start', 'api_call', 'exploit', 'vulnerability', 'end'].includes(node.type)
     );
-}
+} */
 
 /**
- * Validates a single edge
+ * Validates a single edge (Unused)
  */
-function isValidEdge(edge: any, nodeIds: Set<string>): boolean {
+/* function isValidEdge(edge: any, nodeIds: Set<string>): boolean {
     return (
         edge &&
         typeof edge === 'object' &&
@@ -150,7 +150,7 @@ function isValidEdge(edge: any, nodeIds: Set<string>): boolean {
         nodeIds.has(edge.target) &&
         edge.source !== edge.target // No self-loops
     );
-}
+} */
 
 /**
  * Calculates optimal node positions using hierarchical layout
@@ -710,7 +710,7 @@ export const attackGraphService = {
             }
 
             // Update the attack graph
-            const { data: updatedScan, error: updateError } = await supabase
+            const { error: updateError } = await supabase
                 .from('scans')
                 .update({
                     attack_graph: validatedGraph,

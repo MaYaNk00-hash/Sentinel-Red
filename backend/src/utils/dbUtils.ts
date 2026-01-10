@@ -33,13 +33,7 @@ export enum LogLevel {
 
 export function log(level: LogLevel, context: string, message: string, data?: any): void {
     const timestamp = new Date().toISOString();
-    const logEntry = {
-        timestamp,
-        level,
-        context,
-        message,
-        data: data ? JSON.stringify(data).substring(0, 500) : undefined
-    };
+    // logEntry definition removed as it was unused
 
     const logLine = `[${timestamp}] [${level}] [${context}] ${message}${data ? ' | Data: ' + JSON.stringify(data).substring(0, 200) : ''}`;
 

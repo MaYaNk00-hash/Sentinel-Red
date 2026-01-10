@@ -131,7 +131,7 @@ function generateId(): string {
 }
 
 // Get recommendation based on vulnerability type
-function getRecommendation(category: string, patternName: string): string {
+function getRecommendation(category: string, _patternName: string): string {
     const recommendations: Record<string, string> = {
         sqlInjection: 'Use parameterized queries or prepared statements. Never concatenate user input directly into SQL queries.',
         xss: 'Sanitize and encode all user input before rendering. Use framework-provided escaping mechanisms.',

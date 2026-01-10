@@ -13,7 +13,7 @@ import {
     CACHE_TTL,
     cacheKeys
 } from '../utils/dbUtils';
-import { parsePaginationParams, PaginatedResponse } from '../utils/paginationUtils';
+import { parsePaginationParams } from '../utils/paginationUtils';
 import * as path from 'path';
 
 const CONTEXT = 'ProjectController';
@@ -464,11 +464,11 @@ async function processScan(scanId: string, projectId: string) {
 
         try {
             // Prepare data for AI analysis
-            const analysisData = {
+            /* const analysisData = {
                 findings: scanResult.findings.slice(0, 20), // Top 20 findings
                 endpoints: targetEndpoints.slice(0, 10), // Top 10 endpoints
                 summary: scanResult.summary
-            };
+            }; */
 
             const aiEnhancedGraph = await aiService.analyzeEndpoints(targetEndpoints.length > 0 ? targetEndpoints : [
                 { method: 'SCAN', path: scanPath, findings: scanResult.findings.length }

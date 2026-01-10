@@ -140,7 +140,7 @@ export function parseCursorParams(query: any): CursorPaginationParams {
  */
 export function createCursorResponse<T extends { id: string }>(
     data: T[],
-    limit: number,
+    _limit: number,
     hasMore: boolean
 ): CursorPaginatedResponse<T> {
     return {
